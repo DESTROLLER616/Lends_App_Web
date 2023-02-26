@@ -1,0 +1,24 @@
+
+.title {
+    @apply text-center text-5xl font-extrabold underline text-red-900 hover:text-blue-500 focus:text-green-600
+}
+
+.input-login {
+    @apply border-b-2 border-sky-500 w-1/2 mb-5 text-lime-700 font-bold focus:outline-none focus:border-sky-400 focus:animate-pulse;
+}
+
+.main-box {
+    @apply h-screen bg-gradient-to-r from-purple-500/40 to-pink-500/40 flex flex-col items-center justify-center bg-white;
+}
+
+.form-box {
+    @apply bg-white max-w-screen-sm flex flex-col items-center justify-center w-3/4 py-5 pt-5 border-none rounded-2xl shadow-lg shadow-indigo-500/80;
+}
+
+.login {
+    @apply bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-green-400 text-white w-1/4 p-1 mt-3 mb-7 hover:rounded-xl hover:bg-green-300 font-semibold shadow-md shadow-sky-500/50
+}
+
+.alert {
+    @apply mt-3 text-red-500 font-medium
+}

@@ -1,0 +1,36 @@
+<div class="container w-11/12 m-auto mt-8 border shadow-lg mb-10">
+    <h2 class="text-xl font-bold mb-7">Categories</h2>
+
+    <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm)" class="flex flex-col items-center justify-center border w-11/12 m-auto mb-5">
+        <!-- <input type="hidden" name="_id" [(ngModel)]="category._id"> -->
+
+        <input type="text" name="name" [(ngModel)]="category.name" placeholder="Category name" class="mt-9 w-11/12 border-b border-sky-200">
+
+        <textarea cols="30" rows="3" name="description" [(ngModel)]="category.description" placeholder="Category description" class="mt-9 mb-5 w-11/12 border border-sky-200"></textarea>
+
+        <div class="w-11/12 m-auto flex flex-row items-stretch justify-between mb-5">
+            <button class="w-full h-8 bg-sky-400 rounded-md text-white font-semibold hover:bg-sky-600">Save</button>
+        </div>
+    </form>
+
+</div> 
+
+<div>
+    <table class="w-11/12 m-auto border shadow mb-16">
+        <thead class="border">
+            <tr class="">
+                <th class="border bg-sky-100">Name</th>
+                <th class="border bg-green-100">Description</th>
+                <th class="border bg-gray-100">Operations</th>
+            </tr>
+        </thead>
+    
+        <tbody class="border">
+            <tr *ngFor="let category of categories">
+                <td class="text-center border">{{ category.name }}</td>
+                <td class="text-center border text-clip">{{ category.description }}</td>
+                <td class="border flex flex-row items-center justify-center"><button class="w-14 bg-sky-200 m-1 rounded-md">Edit</button> <button class="w-14 bg-red-200 m-1 rounded-md">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

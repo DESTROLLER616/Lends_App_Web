@@ -1,0 +1,24 @@
+<main class="main-box"> 
+    <div class="flex flex-col items-center justify-center w-full">
+        <form class="form-box" [formGroup]="formUser" (ngSubmit)="login()">
+            <img src="../assets/Logo.png" alt="Lends image" class="w-1/2 mb-2">
+
+            <h1 class="uppercase mb-10 text-2xl font-bold antialiased">Sign in</h1>
+        
+
+            <!-- <input type="hidden" formControlName="strategy" value="local"> -->
+
+            <p *ngIf="email.errors?.['email']" class="alert">Email no valido</p>
+            <p *ngIf="email.errors?.['require']" class="alert">Email requerido</p>
+            <input type="text" placeholder="Email" formControlName="email" class="input-login">
+
+            <span *ngIf="password.errors?.['require']" class="alert">Put a password</span>
+            <span *ngIf="password.errors?.['minlength']" class="alert">put 8 caracterers minimum</span>
+            <input type="password" placeholder="Password" formControlName="password" class="input-login">
+
+            <button class="login" [disabled]="formUser.invalid">Login</button>
+        </form>
+    </div>
+
+    {{ er }}
+</main>

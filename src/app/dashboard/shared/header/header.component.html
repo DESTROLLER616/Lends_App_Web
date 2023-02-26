@@ -1,0 +1,28 @@
+<nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+
+    <div class="flex justify-between items-center">
+        <span class="text-2xl font-[Poppins] cursor-pointer">
+            <img src="../../../../assets/Logo.png" alt="" class="h-10 inline">
+        </span>
+
+        <span class="text-3xl cursor-pointer md:hidden block">
+            <img src="../../../../assets/lista.png" alt="" name="menu" class="w-7" (click)="Menu(this)">
+        </span>
+    </div>
+
+    <ul class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+        <li class="mx-4 my-6 md:my-0">
+            <a routerLink="/dashboard" class="text-base hover:text-cyan-500 duration-500">HOME</a>
+        </li>
+
+        <li class="mx-4 my-6 md:my-0">
+            <a routerLink="/dashboard/categories" class="text-base hover:text-cyan-500 duration-500">CATEGORIES</a>
+        </li>
+
+        <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-base hover:text-cyan-500 duration-500">Example 2</a>
+        </li>
+
+        <app-logout></app-logout>
+    </ul>
+</nav>
