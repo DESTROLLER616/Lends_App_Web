@@ -9,12 +9,14 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { CookieService } from 'ngx-cookie-service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { TokenService } from './interceptors/token/token.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

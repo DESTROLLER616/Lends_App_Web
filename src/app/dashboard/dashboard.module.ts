@@ -11,7 +11,8 @@ import { TokenService } from '../interceptors/token/token.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TableCategoriesComponent } from './pages/categories/table-categories/table-categories.component';
 import { FormsModule } from '@angular/forms';
-
+import { PaginationComponent } from './shared/pagination/pagination.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     WelcomeComponent,
     LogoutComponent,
-    TableCategoriesComponent
+    TableCategoriesComponent,
+    PaginationComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   exports: [],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true},]

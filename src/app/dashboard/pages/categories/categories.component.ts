@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { delay, take } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Categories } from 'src/app/models/categories.interface';
 import { NgForm } from '@angular/forms';
@@ -7,13 +7,19 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  styleUrls: ['./categories.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CategoriesComponent implements OnInit{
+export class CategoriesComponent implements OnInit, OnChanges{
   constructor(public categoriesService: CategoriesService){}
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('hELLO')
+  }
   
   categories: Categories[] = []
-  skip: any = 0
+  skip?: number
+  totales: number = 0
+  pageNum: number = 1
 
   category: Categories = {
     _id: '',
@@ -22,40 +28,35 @@ export class CategoriesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getCategories()
+    this.getCategories(this.pageNum)
   }
 
   cleanForm(form: NgForm){
     return form.reset()
   }
 
-  getCategories(){
-    const skip = this.getPagination()
-
-    this.categoriesService.getCategories(skip)
+  getCategories(page: number = 0){
+    this.categoriesService.getCategories(page * 10)
     .pipe(
       take(1)
     ).subscribe( (res:any) => {
       console.log(res);
       
-      const {data} = res
+      const {data, total} = res
       this.categories = [...data]
       console.log(this.categories);
+      this.skip = total
+      console.log(total);
+      console.log(this.skip);
     })
   }
 
-  getPagination(): any{
+  getPagination(pages: number = 1): any{
     this.categoriesService.getCategories()
     .pipe(
       take(1)
     ).subscribe( (res:any) => {
-      console.log(res.total);
-      const total = res.total
-
-      console.log(Math.ceil(total / 10));
-      
-
-      return Math.ceil(total / 10)
+      this.skip = res
     })
   }
 

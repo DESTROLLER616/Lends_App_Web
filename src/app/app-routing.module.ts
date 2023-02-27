@@ -5,6 +5,7 @@ import { MainComponent } from './dashboard/pages/main/main.component';
 import { WelcomeComponent } from './dashboard/pages/welcome/welcome.component';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
     {path: 'categories', component: CategoriesComponent},
   ]},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

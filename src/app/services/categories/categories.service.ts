@@ -14,11 +14,15 @@ export class CategoriesService {
 
   constructor(private http:HttpClient) { }
 
-  getCategories(page = 1){
+  getCategories(page = 0){
     return this.http.get<Categories[]>(`${this.URL_BASE}/?$skip=${page}`)
   }
 
   createCategory(category: Categories){
     return this.http.post(this.URL_BASE, category)
+  }
+
+  pagination(page:number){
+    return this.http.get<Categories[]>(`${this.URL_BASE}/?$skip=${page}`)
   }
 }

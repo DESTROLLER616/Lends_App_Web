@@ -15,6 +15,12 @@
 
 </div> 
 
+<div class="container m-auto">
+    <app-pagination (pageNum)="getCategories($event - 1)"></app-pagination>
+</div>
+
+{{ pageNum }}
+
 <div>
     <table class="w-11/12 m-auto border shadow mb-16">
         <thead class="border">
